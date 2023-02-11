@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+    OfficeWorker bob = new OfficeWorker("bob","workjob");
     }
+
+
 }
 
-//EMR second attempt. This time using abstract class and interfaces
-   //CanManageCase
-        //methods: OASISDocumentation, inputOrders,
+
 
     //main
         //ArrayList of Patients
@@ -15,30 +15,12 @@ public class Main {
         //factory generation of patients and workers? Might need their variable names though...
         //office personal will be able to querry the patient and clinician lists to assign
 
-    //Worker abstract class
-        //fields: name, static employeeID,
-        //methods: punchTime, sendMessages
-
-        //Office personnel non-abstract subclass extends Worker
-            //fields: title
-            //methods:assignPatients, removePatients (both will accept an ArrayList of Patients and Clinicians to querry and add if
-                // PT zipcodeArrrayList contains pt zipcode
-
-        //Clinician abstract subclass extends Worker
-            //fields: title,zipcodes ArrayList, Patients ArrayList
-            //methods: takeVitals, document, editMedications
-
-                //PTA non-abstract subclass extends Clinician
-                    // methods: balance, gait, transfer
-                //physical therapist class extends PTA and implements canManageCase Interface
-
-                //Nursing assistant non-abstract class
-                    //methods: wound care, medication training
-                //Nurse extends nursing and implements CanManageCase interface
 
 
-        //Patient non-abstract class
-            //fields: name, zipCode, medication ArrayList, static MRNNumber
+
+
+
+
 
 
 
