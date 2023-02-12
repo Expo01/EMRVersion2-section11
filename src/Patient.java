@@ -20,4 +20,12 @@ public class Patient{
         this.name = name;
         this.territory = territory;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", territory='" + territory + '\'' +
+                '}';
+    }
 }
