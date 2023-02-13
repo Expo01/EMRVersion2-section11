@@ -21,6 +21,10 @@ public class Patient{
         this.territory = territory;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +

@@ -4,45 +4,44 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) {
 
-        OfficeWorker bob = new OfficeWorker("bob", "other");
-        bob.sendMessage();
-//        PhysicalTherapyAssistant barbara = new PhysicalTherapyAssistant("barbara", "PTA", "bellevue");
-//        barbara.editMedications();
-//        PhysicalTherapist hank = new PhysicalTherapist("Hank", "PT", "Redmond");
-//        hank.performOASIS();
-//        NursingAssistant betty = new NursingAssistant("betty", "CNA", "Seattle");
-//        betty.clockIn();
-//        Nurse voldemort = new Nurse("Voldemort", "nurse", "Hogwarts");
-//        voldemort.woundCare();
-//        OccupationalTherapyAssistant debbie = new OccupationalTherapyAssistant("Debbie", "COTA", "Renton");
-//        debbie.showerTraining();
-//        OccupationalTherapist neesha = new OccupationalTherapist("Neesha", "OT", "Renton");
-//        neesha.performCogTest();
-
-
-
         ArrayList<Patient> agencyPatientList = new ArrayList<>();
         addNewPatientToAgency("Dick", "Bellevue", agencyPatientList);
         addNewPatientToAgency("Sally", "Seattle", agencyPatientList);
-        addNewPatientToAgency("Sally", "Seattle", agencyPatientList);
+        addNewPatientToAgency("Sally", "Seattle", agencyPatientList); //benefit of directly creating and adding
+        //patienet to the agency master list and avoids having a Patient that is created but isn't in any organized list
+        // but the downside is that withouth an object name created, the criteria to add and remove to master list is
+        // based on the most unique field such as name, otheerwise I have to test for exact much of all field criteria manually
+
+        //this really is a problem I need to solve because all ofmy code I keep trying to hide classes and use factory methods, but then
+        // I can't do direct object searching or comparison withouth thee actual object variable name.
 
         displayAgencyPatientList(agencyPatientList);
 
 
     }
 
-    public static void addNewPatientToAgency(String name, String territory, ArrayList<Patient> agencyPatientList){
-//        agencyPatientList.add(new Patient(name, territory));
-                for (Patient start : agencyPatientList){
-            if(start.equals (new Patient(name, territory))){
-                System.out.println("pt already in list");
-            } else agencyPatientList.add(new Patient(name,territory));
-            System.out.println("patient added");
+    public static void addNewPatientToAgency(String name, String territory, ArrayList<Patient> agencyPatientList) {
+        for (Patient start : agencyPatientList) {
+            if (start.getName().equals(name)) {
+                System.out.println("patient is already in the agency's patient list"); //this doesn't work. don't know why
+            } else {
+                agencyPatientList.add(new Patient(name, territory));
+                System.out.println("patient added to agency's patient list");
+            }
         }
     }
 
-    public static void displayAgencyPatientList(ArrayList<Patient> agencyPatientList){
-        for(Patient start : agencyPatientList){
+    public static void removePatientFromAgency(String name, ArrayList<Patient> agencyPatientList) {
+        for (Patient start : agencyPatientList) {
+            if (start.getName().equals(name)) {
+                agencyPatientList.remove(start);
+                System.out.println("patient found and removed"); //downside is this doesn't look up by MRN #, and duplicate names could theoretically exist
+            }
+        }
+    }
+
+    public static void displayAgencyPatientList(ArrayList<Patient> agencyPatientList) {
+        for (Patient start : agencyPatientList) {
             System.out.println(start); //overRided to String method in Patient class
         }
     }
